@@ -7,54 +7,29 @@ const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+	res.sendFile(`${__dirname}/index.html`);
+});
 
 app.get('/api/form', (req, res) => {
-	res.send(`
-    <h2>Sample Form</h2>
-    <form onsubmit="submitForm(event)">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
-      <br />
-      <label for="email">Email:</label>
-      <input style="margin: 15px 0px" type="email" id="email" name="email" placeholder="name@domain" required /><br />
-      <label for="payment-type">Payment Type:</label>
-      <br />
-      <input type="radio" id="cash" name="payment-type" value="cash" />
-      <label for="cash">Cash</label>
-      <br />
-      <input type="radio" id="credit-card" name="payment-type" value="credit-card" />
-      <label for="credit-card">Credit Card</label>
-      <br />
-      <input type="radio" id="googlepay" name="payment-type" value="googlepay" />
-      <label for="debit-card">Google Pay</label>
-      <br />
-      <input type="radio" id="applepay" name="payment-type" value="applepay" />
-      <label for="paypal">Apple Pay</label><br />
-      <input style="margin: 15px 0px" type="checkbox" id="promotion" name="promotion" value="on" />
-      <label for="promotion">Sign me up to special promotions</label>
-      <br />
-      <label for="location">Preferred Locations:</label>
-      <select style="margin-bottom: 15px" id="location" name="location">
-        <option value="la">Los Angeles</option>
-        <option value="oc">Orange County</option>
-        <option value="rs">Riverside</option>
-        <option value="sd">San Diego</option>
-      </select>
-      <br />
-      <button type="submit">Submit</button>
-      <button type="reset">Cancel</button>
-    </form>
-  `);
+	res.sendFile(`${__dirname}/views/ex1.html`);
 });
 
 app.post('/api/form', (req, res) => {
-	const { name, email, paymentType, promotion, location } = req.body;
+	const name = req.body.name;
+	const email = req.body.email;
 
 	res.send(`
     <div>
       <p>${name}, Thank you for your order. We will keep you posted on delivery status at ${email}.</p>
     </div>
   `);
+});
+
+app.get('/api/countries', (req, res) => {
+	res.sendFile(`${__dirname}/views/ex2.html`);
 });
 
 app.post('/api/countries', (req, res) => {
@@ -71,6 +46,10 @@ app.post('/api/countries', (req, res) => {
       <p>Your name is ${name} and you visited ${numberOfCountriesVisited} countries. Keep traveling!</p>
     </div>
   `);
+});
+
+app.get('/api/articles', (req, res) => {
+	res.sendFile(`${__dirname}/views/ex3.html`);
 });
 
 app.post('/api/articles', (req, res) => {

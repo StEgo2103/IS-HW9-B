@@ -4,11 +4,44 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Order - Process a Form</title>
-        <script src="../public/ex1.js"></script>
 	</head>
 	<body>
-		<h2><a href="../index.html">Links to Start Page</a></h2>
-		<div id="form"></div>
-        <div id="response"></div>
+		<h2><a href="/">Links to Start Page</a></h2>
+		<h2>Sample Form</h2>
+		<form>
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name" required />
+			<br />
+			<label for="email">Email:</label>
+			<input style="margin: 15px 0px" type="email" id="email" name="email" placeholder="name@domain" required /><br />
+			<label for="payment-type">Payment Type:</label>
+			<br />
+			<input type="radio" id="cash" name="payment-type" value="cash" />
+			<label for="cash">Cash</label>
+			<br />
+			<input type="radio" id="credit-card" name="payment-type" value="credit-card" />
+			<label for="credit-card">Credit Card</label>
+			<br />
+			<input type="radio" id="googlepay" name="payment-type" value="googlepay" />
+			<label for="debit-card">Google Pay</label>
+			<br />
+			<input type="radio" id="applepay" name="payment-type" value="applepay" />
+			<label for="paypal">Apple Pay</label><br />
+			<input style="margin: 15px 0px" type="checkbox" id="promotion" name="promotion" value="on" />
+			<label for="promotion">Sign me up to special promotions</label>
+			<br />
+			<label for="location">Preferred Locations:</label>
+			<select style="margin-bottom: 15px" id="location" name="location">
+				<option value="la">Los Angeles</option>
+				<option value="oc">Orange County</option>
+				<option value="rs">Riverside</option>
+				<option value="sd">San Diego</option>
+			</select>
+			<br />
+			<button type="submit">Submit</button>
+			<button type="reset">Cancel</button>
+		</form>
+		<div id="response"></div>
+		<script src="/ex1.js"></script>
 	</body>
 </html>

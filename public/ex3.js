@@ -1,4 +1,4 @@
-function submitForm(event) {
+document.querySelector('form').addEventListener('submit', (event) => {
 	event.preventDefault();
 	const form = event.target;
 
@@ -21,4 +21,4 @@ function submitForm(event) {
 		.catch((error) => {
 			console.error('Error:', error);
 		});
-}
+});
